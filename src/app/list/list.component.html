@@ -1,0 +1,11 @@
+<ion-list>
+  <ion-item *ngFor="let todo of todoService.todos">
+    <ion-label *ngIf="!editMode[todo.id]">{{ todo.text }}</ion-label>
+    <ion-input *ngIf="editMode[todo.id]" [(ngModel)]="editText[todo.id]"></ion-input>
+    <ion-buttons slot="end">
+      <ion-button *ngIf="!editMode[todo.id]" (click)="edit(todo.id)">Edit</ion-button>
+      <ion-button *ngIf="editMode[todo.id]" (click)="save(todo.id)">Save</ion-button>
+      <ion-button *ngIf="editMode[todo.id]" (click)="cancelEdit(todo.id)">Cancel</ion-button>
+      <ion-button (click)="delete(todo.id)">Delete</ion-button>
+    </ion-buttons>
+ 
